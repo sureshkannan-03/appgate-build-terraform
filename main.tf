@@ -5,10 +5,13 @@ resource "aws_vpc" "dev-vpc" {
    Name = "Dev-vpc"
  }
 }
-/* #   *** Public subnet creation ***
-resource "aws_subnet" "VLAN-100" {
-  cidr_block = 
+#   *** Public subnet creation ***
+resource "aws_subnet" "public_subnets" {
+  vpc_id = aws_vpc.dev-vpc.id
+  cidr_block = var.public_subnet_cidrs
+ tags = {
+   Name = "dmz-primary"
+ }
 }
-*/
 
 
